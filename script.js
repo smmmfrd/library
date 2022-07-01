@@ -1,3 +1,5 @@
+const shelf = document.querySelector('#shelf');
+
 var myLibrary = [];
 
 function Book(title, author, numPages, read){
@@ -19,6 +21,22 @@ function addBookToLibrary(title, author, numPages, read){
     myLibrary.push(newBook);
 }
 
+function buildBookOnShelf(book){
+    let bk = document.createElement('div');
+    bk.classList.add("book");
+
+    let title = document.createElement('p');
+    title.textContent = `\"${book.title}\"`;
+    bk.appendChild(title);
+
+    let author = document.createElement('p');
+    author.textContent = `By: ${book.author}`;
+    bk.appendChild(author);
+
+    shelf.appendChild(bk);
+}
+
+// Placeholders
 addBookToLibrary("Dune", "Frank Herbert", 1000, false);
 addBookToLibrary("Twin Towers", "J.R.R. Tolkien", 1000, false);
 addBookToLibrary("Naruto vol. 1", "Masashi Kishimoto", 300, true);
@@ -29,10 +47,18 @@ addBookToLibrary("The Mystery of Edwin Drood", "Charles Dickens", 218, false);
 addBookToLibrary("Encyclopedia Brown and the Case of the Secret Pitch", "Donald J. Sobol", 96, false);
 addBookToLibrary("Alex Rider: Stormbreaker", "Anthony Horowitz", 304, false);
 
-function logLibraries(){
+// function logLibraries(){
+//     myLibrary.forEach((book) => {
+//         console.log(book.logLine());
+//     });
+// }
+
+// logLibraries();
+
+function fillShelf(){
     myLibrary.forEach((book) => {
-        console.log(book.logLine());
+        buildBookOnShelf(book);
     });
 }
 
-logLibraries();
+fillShelf();
