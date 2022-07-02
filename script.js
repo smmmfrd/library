@@ -1,4 +1,6 @@
 const shelf = document.querySelector('#shelf');
+const header = document.querySelector('#header');
+const headerButton = document.querySelector('#header-button');
 
 var myLibrary = [];
 
@@ -47,14 +49,6 @@ addBookToLibrary("The Mystery of Edwin Drood", "Charles Dickens", 218, false);
 addBookToLibrary("Encyclopedia Brown and the Case of the Secret Pitch", "Donald J. Sobol", 96, false);
 addBookToLibrary("Alex Rider: Stormbreaker", "Anthony Horowitz", 304, false);
 
-// function logLibraries(){
-//     myLibrary.forEach((book) => {
-//         console.log(book.logLine());
-//     });
-// }
-
-// logLibraries();
-
 function fillShelf(){
     myLibrary.forEach((book) => {
         buildBookOnShelf(book);
@@ -62,3 +56,55 @@ function fillShelf(){
 }
 
 fillShelf();
+
+// INPUT
+let formOpen = false;
+function toggleForm(){
+    if(!formOpen){
+        let form = document.createElement('div');
+        form.id = "book-input";
+
+        let titleLabel = document.createElement('p');
+        titleLabel.textContent = "TITLE:";
+        form.appendChild(titleLabel);
+
+        let title = document.createElement('input');
+        title.type = "text";
+        form.appendChild(title);
+
+        let authorLabel = document.createElement('p');
+        authorLabel.textContent = "AUTHOR:";
+        form.appendChild(authorLabel);
+
+        let author = document.createElement('input');
+        author.type = "text";
+        form.appendChild(author);
+
+        let blankSpace = document.createElement('p');
+        blankSpace.textContent = "";
+        form.append(blankSpace);
+
+        let submit = document.createElement('input');
+        submit.type = "button";
+        submit.value = "ADD BOOK";
+        submit.onclick = () =>{
+            toggleForm();
+            submitBook();
+        };
+        form.appendChild(submit);
+
+        header.appendChild(form);
+
+        headerButton.value = "Close";
+    } else {
+        header.removeChild(header.lastChild);
+
+        headerButton.value = "+ Add a Book";
+    }
+
+    formOpen = !formOpen;
+}
+
+function submitBook(){
+    alert("epic");
+}
