@@ -36,6 +36,26 @@ function buildBookOnShelf(book){
     author.textContent = `By: ${book.author}`;
     bk.appendChild(author);
 
+    let pages = document.createElement('p');
+    pages.textContent = `(${book.numPages} pages)`;
+    pages.style.fontSize = "0.9rem";
+    bk.appendChild(pages);
+
+    let btnHolder = document.createElement('div');
+    btnHolder.classList = "book-btn-holder";
+
+    // READ ICON
+    let read = document.createElement('img')
+    read.style.width = "40px";
+    read.style.height = "40px";
+
+    read.src = book.read ? "./images/checkmark-book.svg" : "./images/remove-book.svg";
+
+    read.classList = book.read ? "read-book-icon" : "unread-book-icon";
+    btnHolder.appendChild(read);
+
+    bk.append(btnHolder);
+
     // shelf.appendChild(bk);
     shelf.insertAdjacentElement('afterbegin', bk);
 }

@@ -71,3 +71,19 @@ body{
     justify-content: flex-end;
     align-items: center;
 }
+
+.book-btn-holder{
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.read-book-icon{
+    /* color: #25ec2f; */
+    filter: invert(68%) sepia(89%) saturate(777%) hue-rotate(65deg) brightness(92%) contrast(106%);
+}
+
+.unread-book-icon{
+    /* color: #e02626; */
+    filter: invert(17%) sepia(89%) saturate(4794%) hue-rotate(354deg) brightness(95%) contrast(85%);
+}
