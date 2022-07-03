@@ -58,6 +58,7 @@ function toggleForm(){
         let form = document.createElement('div');
         form.id = "book-input";
 
+        // TITLE
         let titleLabel = document.createElement('p');
         titleLabel.textContent = "TITLE:";
         form.appendChild(titleLabel);
@@ -67,6 +68,7 @@ function toggleForm(){
         title.id = "new-title";
         form.appendChild(title);
 
+        // AUTHOR
         let authorLabel = document.createElement('p');
         authorLabel.textContent = "AUTHOR:";
         form.appendChild(authorLabel);
@@ -75,6 +77,27 @@ function toggleForm(){
         author.type = "text";
         author.id = "new-author";
         form.appendChild(author);
+
+        // PAGES
+        let pagesLabel = document.createElement('p');
+        pagesLabel.textContent = "PAGE #:";
+        form.appendChild(pagesLabel);
+
+        let pages = document.createElement('input');
+        pages.type = "number";
+        pages.id = "new-pages";
+        form.appendChild(pages);
+
+        // READ
+        let readLabel = document.createElement('p');
+        readLabel.textContent = "FINISHED?";
+        form.appendChild(readLabel);
+
+        let read = document.createElement('input');
+        read.type = "checkbox";
+        read.style = "width: 30px;";
+        read.id = "new-read";
+        form.appendChild(read);
 
         let blankSpace = document.createElement('p');
         blankSpace.textContent = "";
@@ -103,10 +126,12 @@ function toggleForm(){
 function submitBook(){
     let title = document.getElementById("new-title").value;
     let author = document.getElementById("new-author").value;
-
+    let pages = document.getElementById("new-pages").value;
+    let read = document.getElementById("new-read").checked;
+    
     if(title.length > 0 && author.length > 0){
         alert(`${title}, by ${author}`);
         toggleForm();
-        addBookToLibrary(title, author, 0, false);
+        addBookToLibrary(title, author, pages, read);
     }
 }
