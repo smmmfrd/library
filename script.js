@@ -13,7 +13,7 @@ function Book(title, author, numPages, read){
 
 // Prototype
 Book.prototype.logLine = function() {
-    return `${this.title}, by ${this.author}`
+    return `${this.title}, by ${this.author}`;
 };
 
 // Management
@@ -21,6 +21,7 @@ function addBookToLibrary(title, author, numPages, read){
     let newBook = new Book(title, author, numPages, read);
 
     myLibrary.push(newBook);
+    buildBookOnShelf(newBook);
 }
 
 function buildBookOnShelf(book){
@@ -35,7 +36,8 @@ function buildBookOnShelf(book){
     author.textContent = `By: ${book.author}`;
     bk.appendChild(author);
 
-    shelf.appendChild(bk);
+    // shelf.appendChild(bk);
+    shelf.insertAdjacentElement('afterbegin', bk);
 }
 
 // Placeholders
@@ -48,14 +50,6 @@ addBookToLibrary("American Gods", "Neil Gaiman", 400, false);
 addBookToLibrary("The Mystery of Edwin Drood", "Charles Dickens", 218, false);
 addBookToLibrary("Encyclopedia Brown and the Case of the Secret Pitch", "Donald J. Sobol", 96, false);
 addBookToLibrary("Alex Rider: Stormbreaker", "Anthony Horowitz", 304, false);
-
-function fillShelf(){
-    myLibrary.forEach((book) => {
-        buildBookOnShelf(book);
-    });
-}
-
-fillShelf();
 
 // INPUT
 let formOpen = false;
@@ -70,6 +64,7 @@ function toggleForm(){
 
         let title = document.createElement('input');
         title.type = "text";
+        title.id = "new-title";
         form.appendChild(title);
 
         let authorLabel = document.createElement('p');
@@ -78,6 +73,7 @@ function toggleForm(){
 
         let author = document.createElement('input');
         author.type = "text";
+        author.id = "new-author";
         form.appendChild(author);
 
         let blankSpace = document.createElement('p');
@@ -88,7 +84,6 @@ function toggleForm(){
         submit.type = "button";
         submit.value = "ADD BOOK";
         submit.onclick = () =>{
-            toggleForm();
             submitBook();
         };
         form.appendChild(submit);
@@ -106,5 +101,12 @@ function toggleForm(){
 }
 
 function submitBook(){
-    alert("epic");
+    let title = document.getElementById("new-title").value;
+    let author = document.getElementById("new-author").value;
+
+    if(title.length > 0 && author.length > 0){
+        alert(`${title}, by ${author}`);
+        toggleForm();
+        addBookToLibrary(title, author, 0, false);
+    }
 }
