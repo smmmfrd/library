@@ -45,14 +45,25 @@ function buildBookOnShelf(book){
     btnHolder.classList = "book-btn-holder";
 
     // READ ICON
-    let read = document.createElement('img')
-    read.style.width = "40px";
-    read.style.height = "40px";
+    let readDisplay = document.createElement('img')
+    readDisplay.style.width = "40px";
+    readDisplay.style.height = "40px";
 
-    read.src = book.read ? "./images/checkmark-book.svg" : "./images/remove-book.svg";
+    readDisplay.src = book.read ? "./images/checkmark-book.svg" : "./images/remove-book.svg";
 
-    read.classList = book.read ? "read-book-icon" : "unread-book-icon";
-    btnHolder.appendChild(read);
+    readDisplay.classList = book.read ? "read-book-icon" : "unread-book-icon";
+
+    readDisplay.addEventListener('click', () => {
+        let index = myLibrary.indexOf(book);
+        let readStatus = !myLibrary[index].read;
+        myLibrary[index].read = readStatus;
+
+        readDisplay.src = readStatus ? "./images/checkmark-book.svg" : "./images/remove-book.svg";
+
+        readDisplay.classList = readStatus ? "read-book-icon" : "unread-book-icon";
+    });
+
+    btnHolder.appendChild(readDisplay);
 
     bk.append(btnHolder);
 
