@@ -65,6 +65,21 @@ function buildBookOnShelf(book){
 
     btnHolder.appendChild(readDisplay);
 
+    // DELETE BUTTON
+    let deleteButton = document.createElement('img')
+    deleteButton.style.width = "40px";
+    deleteButton.style.height = "40px";
+    deleteButton.src = "./images/delete.svg"
+
+    deleteButton.addEventListener('click', () => {
+        let index = myLibrary.indexOf(book);
+        if(index > -1){
+            bk.parentElement.removeChild(bk);
+            myLibrary.splice(index, 1);
+        }
+    });
+    btnHolder.appendChild(deleteButton);
+
     bk.append(btnHolder);
 
     // shelf.appendChild(bk);
