@@ -11,9 +11,6 @@ body{
 #header{
     padding: 1rem;
     background-color: whitesmoke;
-    border-bottom: 1px solid whitesmoke;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
 }
 
 #btn-holder{
@@ -56,6 +53,11 @@ body{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+#form-holder{
+    height: 0;
+    overflow-y: hidden;
 }
 
 #book-input{

@@ -101,68 +101,10 @@ addBookToLibrary("Alex Rider: Stormbreaker", "Anthony Horowitz", 304, false);
 let formOpen = false;
 function toggleForm(){
     if(!formOpen){
-        let form = document.createElement('div');
-        form.id = "book-input";
-
-        // TITLE
-        let titleLabel = document.createElement('p');
-        titleLabel.textContent = "TITLE:";
-        form.appendChild(titleLabel);
-
-        let title = document.createElement('input');
-        title.type = "text";
-        title.id = "new-title";
-        form.appendChild(title);
-
-        // AUTHOR
-        let authorLabel = document.createElement('p');
-        authorLabel.textContent = "AUTHOR:";
-        form.appendChild(authorLabel);
-
-        let author = document.createElement('input');
-        author.type = "text";
-        author.id = "new-author";
-        form.appendChild(author);
-
-        // PAGES
-        let pagesLabel = document.createElement('p');
-        pagesLabel.textContent = "PAGE #:";
-        form.appendChild(pagesLabel);
-
-        let pages = document.createElement('input');
-        pages.type = "number";
-        pages.id = "new-pages";
-        form.appendChild(pages);
-
-        // READ
-        let readLabel = document.createElement('p');
-        readLabel.textContent = "FINISHED?";
-        form.appendChild(readLabel);
-
-        let read = document.createElement('input');
-        read.type = "checkbox";
-        read.style = "width: 30px;";
-        read.id = "new-read";
-        form.appendChild(read);
-
-        let blankSpace = document.createElement('p');
-        blankSpace.textContent = "";
-        form.append(blankSpace);
-
-        let submit = document.createElement('input');
-        submit.type = "button";
-        submit.value = "ADD BOOK";
-        submit.onclick = () =>{
-            submitBook();
-        };
-        form.appendChild(submit);
-
-        header.appendChild(form);
-
+        document.getElementById('form-holder').style.height = "100%";
         headerButton.value = "Close";
     } else {
-        header.removeChild(header.lastChild);
-
+        document.getElementById('form-holder').style.height = "0";
         headerButton.value = "+ Add a Book";
     }
 
@@ -174,10 +116,10 @@ function submitBook(){
     let author = document.getElementById("new-author").value;
     let pages = document.getElementById("new-pages").value;
     let read = document.getElementById("new-read").checked;
-    
+    console.log('a');
     if(title.length > 0 && author.length > 0){
         alert(`${title}, by ${author}`);
-        toggleForm();
-        addBookToLibrary(title, author, pages, read);
+        // toggleForm();
+        // addBookToLibrary(title, author, pages, read);
     }
 }
