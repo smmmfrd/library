@@ -98,6 +98,31 @@ addBookToLibrary("Encyclopedia Brown and the Case of the Secret Pitch", "Donald 
 addBookToLibrary("Alex Rider: Stormbreaker", "Anthony Horowitz", 304, false);
 
 // INPUT
+const form = document.getElementsByTagName('form')[0];
+
+const newTitle = document.getElementById('new-title');
+const titleError = document.querySelector('#new-title + span.error');
+
+const newAuthor = document.getElementById('new-author');
+const authorError = document.querySelector('#new-title + span.error');
+
+const newPages = document.getElementById('new-pages');
+const pagesError = document.querySelector('#new-title + span.error');
+
+function showError(input, errorDisplay) {
+    if (input.validity.valueMissing) {
+        errorDisplay.textContent = "You need to enter something at least.";
+    } else if (input.validity.typeMismatch) {
+        errorDisplay.textContent = "Input does not match pattern.";
+    } else if (input.validity.tooShort) {
+        errorDisplay.textContent = `Email should be at least ${input.minLength}`;
+    } else {
+        console.log(input.validity);
+    }
+
+    errorDisplay.classList.add('active');
+}
+
 let formOpen = false;
 function toggleForm(){
     if(!formOpen){
@@ -117,6 +142,7 @@ function submitBook(){
     let pages = document.getElementById("new-pages").value;
     let read = document.getElementById("new-read").checked;
     console.log('a');
+
     if(title.length > 0 && author.length > 0){
         alert(`${title}, by ${author}`);
         // toggleForm();

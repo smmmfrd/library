@@ -42,6 +42,27 @@ body{
     gap: 50px;
     padding: 1rem;
 }
+/* INPUT */
+#form-holder{
+    height: 0;
+    overflow-y: hidden;
+}
+
+#book-input{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 15px;
+}
+
+#book-input > label {
+    text-align: right;
+}
+
+.error {
+    font-size: 1rem;
+}
+/* CARDS */
 
 .book{
     text-align: center;
@@ -53,25 +74,6 @@ body{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-
-#form-holder{
-    height: 0;
-    overflow-y: hidden;
-}
-
-#book-input{
-    margin-top: 1rem;
-    padding: 0 20%;
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    gap: 15px;
-}
-
-#book-input > p {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 .book-btn-holder{
